@@ -1,0 +1,38 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="contact-card">
+    <template>
+        <style>
+            :host{
+                display: block;
+                border: 1px solid black;
+                margin: 1rem 0;
+                text-align: center;
+                border-radius: 5px;
+                background-color: light-gray;
+            }
+            img {
+                border-radius: 50%;
+            }
+        </style>
+
+        <!-- <h1>{{contact.user.name.first}} {{contact.user.name.last}}</h1> -->
+        <h1>{{computeFullName(contact.name.first, contact.name.last)}}</h1>
+        <img src="{{contact.picture.medium}}">
+        <p>{{contact.email}}</p>
+    </template>
+    <script>
+        Polymer({
+            is: 'contact-card',
+            properties: {
+                contact: {
+                    type: Object
+                }
+            },
+
+            computeFullName: function (first, last) {
+                return first + ' ' + last;
+            }
+        });
+    </script>
+</dom-module>

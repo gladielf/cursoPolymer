@@ -1,0 +1,72 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+
+<!--
+
+  Sngular-toggle-icon.
+
+  Example:
+
+    <sngular-toggle-icon icon="star"></sngular-toggle-icon>
+
+  @demo demo/index.html
+-->
+
+<dom-module id="sngular-toggle-icon">
+  <template>
+    <style>
+      :host {
+        display: inline-block;
+      }
+
+      iron-icon {
+        fill: var(--sngular-toggle-icon-color, transparent);
+        stroke: var(--sngular-toggle-icon-outline-color, currentcolor);
+      }
+
+      :host([pressed]) iron-icon {
+        fill: var(--sngular-toggle-icon-pressed-color, currentcolor);
+      }
+    </style>
+
+    <iron-icon icon="[[icon]]"></iron-icon>
+  </template>
+  <script>
+    Polymer({
+      is: 'sngular-toggle-icon',
+      properties: {
+        /**
+         * The name of the icon to show.
+         */
+        icon: {
+          type: String
+        },
+        /**
+         * This property is active when the toggle is pressed.
+         */
+        pressed: {
+          type: Boolean,
+          value: false,
+          notify: true,
+          reflectToAttribute: true,
+          observer: '_pressedChanged'
+        }
+      },
+      listeners: {
+        'tap': '_tapped'
+      },
+
+      /**
+       * The name of the icon to show.
+       */
+      _tapped: function(){
+        this.toggleAttribute('pressed');
+      },
+
+      _pressedChanged: function() {
+        console.log(this.pressed);
+      }
+    });
+
+  </script>
+</dom-module>

@@ -1,0 +1,44 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<script>
+  Polymer.ContactsBehavior = {
+    properties: {
+        contact: {
+          type: Object,
+        },
+
+        fullName: {
+          type: String,
+          computed: '_computedFullName(contact.name.first, contact.name.last)',
+        },
+
+        favorite: {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: true,
+          observer: '_favoriteChange',
+        },
+      },
+
+    _computedFullName: function (first, last) {
+      return first + ' ' + last;
+    },
+
+    _toggleAsFavorite: function () {
+      this.toggleAttribute('favorite');
+    },
+
+    _addAsFavorite: function () {
+      this.toggleAttribute('favorite', true);
+    },
+
+    _removeAsFavorite: function () {
+      this.toggleAttribute('favorite', false);
+    },
+
+    _favoriteChange: function () {
+      //this.$.favorite.icon = (this.favorite) ? 'star' : 'star-border';
+    },
+  };
+
+</script>

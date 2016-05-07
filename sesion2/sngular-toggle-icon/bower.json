@@ -1,0 +1,27 @@
+{
+  "name": "sngular-toggle-icon",
+  "authors": [
+    "Fermin <fermin.conejo@medianet.es>"
+  ],
+  "description": "",
+  "main": "sngular-toggle-icon.html",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~1.4.0",
+    "iron-icons": "PolymerElements/iron-icons#~1.1.3"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#~1.1.5",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#~1.2.3",
+    "iron-icons": "PolymerElements/iron-icons#~1.1.3"
+  }
+}

@@ -1,0 +1,28 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../contact-card/contact-card.html">
+
+<dom-module id="contacts-app">
+    <template>
+        <style>
+            :host{
+                display: block;
+            }
+        </style>
+        <iron-ajax
+            auto
+            url="https://randomuser.me/api/?results=3"
+            handle-as="json"
+            last-response="{{data}}"
+            debounce-duration="300"></iron-ajax>
+        
+        <template is="dom-repeat" items="{{data.results}}">
+            <contact-card contact={{item}}></contact-card>
+        </template>
+    </template>
+    <script>
+        Polymer({
+            is: 'contacts-app'
+        });
+    </script>
+</dom-module>

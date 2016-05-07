@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>    
+
+    <body>
+        <singular-helloworld></singular-helloworld>
+        <script>
+            var SingularHelloworldProto = Object.create(HTMLElement.prototype);
+
+            SingularHelloworldProto.createCallback = function () {
+                console.log('singular-helloworld created!');
+                this.textContent= 'Hola mindo';
+            }
+
+            SingularHelloworldProto.attachedCallback = function () {
+                console.log('singular-helloworld attached!');
+            }
+
+            SingularHelloworldProto.detachedCallback = function () {
+                console.log('singular-helloworld detached!')
+            }
+
+            var SingularHelloworld = document.registerElement('singular-helloworld',  {prototype: SingularHelloworldProto});
+        </script>
+    </body>
+</html>
