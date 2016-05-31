@@ -1,0 +1,59 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../contact-behavior/contact-behavior.html">
+
+
+<dom-module id="contact-card">
+    <template>
+        <style>
+            :host{
+              display: inline-block;
+            }
+            :host([favorite]) paper-card {
+                background-color: #ff8200;
+            }
+
+            paper-card {
+              margin: 5px;
+              width: 200px;
+              transition: background-color 0.5s ease;
+              --paper-card-header-color: #FFFFFF;
+            }
+
+            iron-image {
+              height: 100px;
+              width: 100px;
+            }
+
+            .done {
+              color: green;
+              float: left;
+            }
+
+            .close{
+              color: red;
+              float: right;
+            }
+        </style>
+
+        <paper-card class="card" image="{{contact.picture.large}}" heading="{{fullName}}">
+          <div class="card-content">
+            <div>{{contact.cell}}</div>
+          </div>
+          <div class="card-actions">
+            <paper-icon-button class="done" icon="done" id="favorite" on-tap="_addAsFavorite"></paper-icon-button>
+            <paper-icon-button class="close" icon="close" id="removeFav" on-tap="_removeAsFavorite"></paper-icon-button>
+          </div>
+        </paper-card>
+
+    </template>
+    <script>
+        Polymer({
+          is: 'contact-card',
+          behaviors: [Polymer.ContactsBehavior],
+        });
+    </script>
+</dom-module>

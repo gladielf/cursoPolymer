@@ -1,0 +1,52 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../bower_components/paper-item/paper-icon-item.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item-body.html">
+<link rel="import" href="../contact-behavior/contact-behavior.html">
+
+<dom-module id="contact-list-item">
+    <template>
+        <style>
+            :host{
+                display: block;
+                border: 1px solid #999;
+                width: 600px;
+                margin: 0 auto;
+            }
+
+            :host([favorite]){
+              background-color: #ff8200;
+            }
+
+            .avatar {
+              display: inline-block;
+              box-sizing: border-box;
+              height: 50px;
+              width: 50px;
+              border-radius: 50%;
+
+            }
+        </style>
+
+        <div role="listbox">
+          <paper-icon-item>
+            <iron-image class='avatar' sizing="cover" item-icon src={{contact.picture.large}}></iron-image>
+            <paper-item-body three-line>
+              <div>{{fullName}}</div>
+              <div secondary>{{contact.cell}}</div>
+              <div secondary>{{contact.email}}</div>
+            </paper-item-body>
+            <paper-icon-button id="favorite" icon="star-border" alt="Favourite" on-tap="_toggleAsFavorite" ></paper-icon-button>
+          </paper-icon-item>
+        </div>
+    </template>
+    <script>
+        Polymer({
+          is: 'contact-list-item',
+          behaviors: [Polymer.ContactsBehavior],
+        });
+    </script>
+</dom-module>
